@@ -1,0 +1,31 @@
+rating:
+  service:
+    port: 8050
+    image:
+      name: sergeyslayer/rating
+      version: "latest"
+    database:
+      url:
+library:
+  service:
+    port: 8060
+    image:
+      name: sergeyslayer/library
+      version: "latest"
+    database: 
+      url:
+reservation:
+  service:
+    port: 8070
+    image:
+      name: sergeyslayer/reservation
+      version: "latest"
+    database: 
+      url:
+gateway:
+  service:
+    port: 8080
+    image:
+      name: sergeyslayer/gateway
+      version: "latest"
+    isGateway: true

@@ -31,14 +31,14 @@ jobs:
       - name: Docker Push
         run: docker-compose push
 
-
-
-
-
-
-
-
-
+      - name: Deploy to k8s
+        run: |
+          kubectl config set-cluster my-cluster --server="${{ secrets.YANDEX_URL }}" --insecure-skip-tls-verify=true
+          kubectl config set-credentials cat7q1ukq3k3m9o35f8r --token="${{ secrets.YANDEX_TOKEN }}"
+          kubectl config set-context default --cluster=my-cluster --user=cat7q1ukq3k3m9o35f8r
+          kubectl config use-context default
+          helm delete services && helm install services k8s/services-chart/
+          sleep 45
 
 
       - name: Run API Tests
