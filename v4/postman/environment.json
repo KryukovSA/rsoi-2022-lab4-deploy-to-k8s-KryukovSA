@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "baseUrl",
-			"value": "158.160.41.244",
+			"value": "http://localhost:8080",
 			"enabled": true
 		}
 	],
