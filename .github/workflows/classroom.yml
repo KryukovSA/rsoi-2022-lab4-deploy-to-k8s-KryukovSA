@@ -25,6 +25,21 @@ jobs:
       - name: Build images
         run: docker-compose build
 
+      - name: Login in docker
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Push
+        run: docker-compose push
+
+
+
+
+
+
+
+
+
+
 
       - name: Run API Tests
         uses: matt-ball/newman-action@master
