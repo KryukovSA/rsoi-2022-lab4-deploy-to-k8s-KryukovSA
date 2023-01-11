@@ -26,20 +26,21 @@ spec:
         containers:
           - name: {{ .Chart.Name}}
             imagePullPolicy: Always
-            image: {{ .Values.service.image.name }}:{{ .Values.service.image.version }}            
+            image: {{ .Values.service.image.name }}:{{ .Values.service.image.version }}
+           
             env:
                 {{ if .Values.service.database.name }}
-                  - name: DATABASE
+                - name: DATABASE
                   value: "{{ .Values.service.database.name }}"
-              { { - end } }
-                  - name: DB_HOST
-                    value: "{{ .Values.service.database.host }}"
-                  - name: DB_PORT
-                    value: "{{ .Values.service.database.port }}"
-                  - name: USERNAME
-                    value: "{{ .Values.service.database.username }}"
-                  - name: PASSWORD
-                    value: "{{ .Values.service.database.password }}"
+              	{{- end}}
+                 - name: DB_HOST
+                   value: "{{ .Values.service.database.host }}"
+                 - name: DB_PORT
+                   value: "{{ .Values.service.database.port }}"
+                 - name: USERNAME
+                   value: "{{ .Values.service.database.username }}"
+                 - name: PASSWORD
+                   value: "{{ .Values.service.database.password }}"
             ports:
               - name: web
                 containerPort: {{ .Values.service.port }}
